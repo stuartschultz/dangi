@@ -1,6 +1,8 @@
 Playground::Application.routes.draw do
 
-  get "popular" => 'popular#index'
+  match 'user_urls/:id' => 'user_urls#index'
+
+  get 'popular' => 'popular#index'
 
   resources :urls
 

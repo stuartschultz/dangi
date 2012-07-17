@@ -1,0 +1,14 @@
+<h1>User <%= current_user.id %> URLs</h1>
+
+  <table>
+  <tr>
+    <td>Url</td>
+    <td>Views</td>
+  <tr>
+  <% @urls.each do |url| %>
+    <tr>
+      <td><%= url.url %></td>
+      <td><%= url.url_views %></td>
+    </tr>
+  <% end %>
+  </table>

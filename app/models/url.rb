@@ -15,6 +15,10 @@ class Url < ActiveRecord::Base
   def self.find_popular(p = 1)
     self.paginate(:page => p, :per_page => 3).order("url_views DESC").all
   end
+
+  def self.find_user_urls(u = 0)
+    self.find_by_user_id(u).order("url_views DESC").all
+  end
   
   private
   
