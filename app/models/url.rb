@@ -17,7 +17,7 @@ class Url < ActiveRecord::Base
   end
 
   def self.find_user_urls(u = 0)
-    self.find_by_user_id(u).order("url_views DESC").all
+    self.order("url_views DESC").find_all_by_user_id(u)
   end
   
   private
