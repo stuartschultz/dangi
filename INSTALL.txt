@@ -1,0 +1,72 @@
+1. rails new <name> -T -d postgresql
+
+2a. Add the following to the gemfile, to enable rspec testing:
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'capybara-firebug'
+  gem 'shoulda'
+  gem 'fabrication'
+  gem 'ffaker'
+  gem 'database_cleaner'
+end
+
+2b. rails generate rspec:install
+
+3. Run bundle install
+
+4a. Setup database.yml settings by refactoring common settings into a common setting
+
+common: &common
+  adapter: postgresql
+  host: localhost
+  port: 5432
+
+4b. And then inserting common into other settings, eg.
+
+development:
+  <<: *common
+  database: playground_development
+
+5. run rake db:create to create database
+
+6. Add "gem devise" to the Gemfile and run bundle install
+
+7. run rails g devise:install and follow instructions on the screen
+
+8. Edit config in devise.rb initializer where appropriate
+
+9. rails g devise user (to setup users)
+
+10. rake db:migrate
+
+11. Add the following or some variation to the application.html.erb view layout
+
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %> |
+  <%= link_to "Login", new_user_session_path %>
+<% end %>
+
+12. Create url scaffold with "rails g scaffold url short_url:string short_url_key:string url:string url_views:integer user_id:integer"
+
+13. Update the index in routes.rb to "urls#index"
+
+14. Run rake db:migrate
+
+TO FILL OUT
+-----------
+
+* "rails g controller Popular index"
+* twitter-bootstrap-rails gem and then instructions
+* less-rails gem for bootstrap
+* gem 'quiet_assets' | gem 'ruby-debug19', :require => 'ruby-debug'
+* edited controller for user_id
+* updated model for url to set defaults using migrations
+* short_url function in model
+* updated routes to send to controller
+
