@@ -88,8 +88,7 @@ class UrlsController < ApplicationController
   
   def short_url_redirect
     @url = Url.find_by_short_url_key(params[:short_url_key])
-    @url.url_views = @url.url_views + 1
-    @url.save
+    Url.increment_views(@url)
     redirect_to(@url.url)
   end
 

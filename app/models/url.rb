@@ -12,6 +12,11 @@ class Url < ActiveRecord::Base
     "http://dangi.heroku.com/#{self.short_url_key}"
   end
 
+  def self.increment_views(url)
+    url.url_views += 1
+    url.save
+  end
+
   def self.find_popular(p = 1)
     self.paginate(:page => p, :per_page => 3).order("url_views DESC").all
   end
