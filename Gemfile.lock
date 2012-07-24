@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ZenTest (4.8.1)
     actionmailer (3.2.3)
       actionpack (= 3.2.3)
       mail (~> 2.4.4)
@@ -31,6 +32,8 @@ GEM
     addressable (2.2.8)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
+    autotest-rails (4.1.2)
+      ZenTest (~> 4.5)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     capybara (1.1.2)
@@ -63,7 +66,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    fabrication (1.4.0)
+    factory_girl (3.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (3.5.0)
+      factory_girl (~> 3.5.0)
+      railties (>= 3.0.0)
     ffaker (1.14.0)
     ffi (1.0.11)
     hike (1.2.1)
@@ -190,12 +197,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest-rails
   capybara
   capybara-firebug
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise
-  fabrication
+  factory_girl_rails (~> 3.0)
   ffaker
   jquery-rails
   less-rails

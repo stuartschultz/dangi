@@ -48,9 +48,11 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-firebug'
   gem 'shoulda'
-  gem 'fabrication'
+  # gem 'fabrication'
+  gem "factory_girl_rails", "~> 3.0"
   gem 'ffaker'
   gem 'database_cleaner'
   gem 'quiet_assets'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'autotest-rails'
 end
