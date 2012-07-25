@@ -17,27 +17,21 @@ describe Url do
     it { should belong_to(:user) }
   end
   
-  context "#short_url" do
-    before do
-      @url = FactoryGirl.build(:url)
+  context "with FactoryGirl" do
+    before(:each) do
+      @url = FactoryGirl.build(:url, :url_views => 3)
     end
-    it "should return specified URL" do 
+    it "should return specified URL with short_url method" do 
       @url.short_url.should == "http://dangi.heroku.com/#{@url.short_url_key}"
     end    
-  end
-  
-  context "#increment_views" do
-    before do
-      @url = FactoryGirl.create(:url, :url_views => 3)
-    end
-    it "should increment url views by 1 each time short url is visited" do
+    it "should increment url views by 1 each time short url is visited with increment_views method" do
       Url.increment_views(@url)
       @url.url_views.should == 4
     end
-  end
+  end  
   
   context "#shorten_url" do
-    before do
+    before(:each) do
       url_to_shorten = "http://#{Faker::Internet.domain_name}"
       @url = Url.create(:url => url_to_shorten)
     end
